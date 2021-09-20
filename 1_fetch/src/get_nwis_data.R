@@ -1,7 +1,8 @@
 
-nwis_df <- function(site_csvs){
+nwis_df <- function(filepath, site_csvs){
   
   # Join data in site_csvs in one data.frame
+  # Write joined data out to a file
   data_out <- data.frame()
   # loop through files
   for (site_csv in site_csvs){
@@ -9,11 +10,13 @@ nwis_df <- function(site_csvs){
     these_data <- read_csv(site_csv, col_types = 'ccTdcc')
     data_out <- bind_rows(data_out, these_data)
   }
-  return(data_out)
+  write_csv(data_out, file = filepath)
+  return(filepath)
 }
 
 
-nwis_site_info <- function(fileout, site_data){
+nwis_site_info <- function(fileout, site_data_csv){
+  site_data <- read_csv(site_data_csv, col_types = 'ccTdcc')
   site_no <- unique(site_data$site_no)
   site_info <- dataRetrieval::readNWISsite(site_no)
   write_csv(site_info, fileout)
