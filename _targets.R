@@ -15,53 +15,48 @@ p_units <- "in"
 
 p1_targets_list <- list(
   tar_target(
-    site_data_01427207_csv,
-    download_nwis_site_data(file.path("1_fetch", "out", "nwis_01427207_data.csv"), 
+    site_data_01427207,
+    download_nwis_site_data("01427207", 
                             parameterCd = nwis_Cd,
                             startDate = start_date,
-                            endDate = end_date),
-    format = "file"
+                            endDate = end_date)
   ),
   tar_target(
-    site_data_01432160_csv,
-    download_nwis_site_data(file.path("1_fetch", "out", "nwis_01432160_data.csv"), 
+    site_data_01432160,
+    download_nwis_site_data("01432160", 
                             parameterCd = nwis_Cd,
                             startDate = start_date,
-                            endDate = end_date),
-    format = "file"
+                            endDate = end_date)
   ),
   tar_target(
-    site_data_01435000_csv,
-    download_nwis_site_data(file.path("1_fetch", "out", "nwis_01435000_data.csv"), 
+    site_data_01435000,
+    download_nwis_site_data("01435000", 
                             parameterCd = nwis_Cd,
                             startDate = start_date,
-                            endDate = end_date),
-    format = "file"
+                            endDate = end_date)
   ),
   tar_target(
-    site_data_01436690_csv,
-    download_nwis_site_data(file.path("1_fetch", "out", "nwis_01436690_data.csv"), 
+    site_data_01436690,
+    download_nwis_site_data("01436690", 
                             parameterCd = nwis_Cd,
                             startDate = start_date,
-                            endDate = end_date),
-    format = "file"
+                            endDate = end_date)
   ),
   tar_target(
-    site_data_01466500_csv,
-    download_nwis_site_data(file.path("1_fetch", "out", "nwis_01466500_data.csv"), 
+    site_data_01466500,
+    download_nwis_site_data("01466500", 
                             parameterCd = nwis_Cd,
                             startDate = start_date,
-                            endDate = end_date),
-    format = "file"
+                            endDate = end_date)
   ),
   tar_target(
     site_data_csv,
     nwis_df(file.path("1_fetch", "out", "site_data.csv"),
-            c(site_data_01427207_csv,
-              site_data_01432160_csv,
-              site_data_01435000_csv,
-              site_data_01436690_csv,
-              site_data_01466500_csv)),
+            list(site_data_01427207,
+                 site_data_01432160,
+                 site_data_01435000,
+                 site_data_01436690,
+                 site_data_01466500)),
     format = "file"
   ),
   tar_target(
